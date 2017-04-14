@@ -1,0 +1,60 @@
+{% set version = "2.0.0" %}
+
+package:
+  name: matplotlib
+  version: {{ version }}
+
+source:
+  url: https://github.com/matplotlib/matplotlib/archive/v{{ version }}.tar.gz
+  sha256: 966a0807bc961726a68e5b60b6e97c91eed6ba20e0d50dfd699a8f854b2d7370
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - gcc
+    - python-dateutil ==2.6.0
+    - pytz ==2016.10
+    - pyparsing ==2.1.4
+    - cycler ==0.10.0
+    - six ==1.10.0
+    - numpy ==1.11.3
+    - functools32 ==3.2.3.2
+    - zlib ==1.2.8
+    - libpng ==1.6.27
+    - freetype ==2.5.5
+  run:
+    - python
+    - setuptools
+    - libgcc
+    - python-dateutil ==2.6.0
+    - pytz ==2016.10
+    - pyparsing ==2.1.4
+    - cycler ==0.10.0
+    - six ==1.10.0
+    - numpy ==1.11.3
+    - functools32 ==3.2.3.2
+    - zlib ==1.2.8
+    - libpng ==1.6.27
+    - freetype ==2.5.5
+
+test:
+  imports:
+    - matplotlib
+    - matplotlib.pyplot
+    - matplotlib._cntr
+    - matplotlib._delaunay
+    - matplotlib._image
+    - matplotlib._path
+    - matplotlib._png
+    - matplotlib._tri
+    - matplotlib.backends._backend_agg
+    - matplotlib.ft2font
+    - matplotlib.ttconv
+    - mpl_toolkits
+    - pylab
+
+about:
+  home: http://matplotlib.org/
+  license: PSF-based (http://matplotlib.org/users/license.html)
+  summary: Publication quality figures in Python
