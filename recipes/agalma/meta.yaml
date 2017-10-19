@@ -1,11 +1,11 @@
 package:
   name: agalma
-  version: 1.0.0
+  version: 1.0.1
 
 source:
-  fn: agalma-1.0.0.zip
-  url: https://bitbucket.org/caseywdunn/agalma/get/release-1.0.0.zip
-  sha256: 519f139e741d2f685f87c32dc8f198346b3017fab19682fd69ca082b290a848d
+  fn: agalma-1.0.1.zip
+  url: https://bitbucket.org/caseywdunn/agalma/get/release-1.0.1.zip
+  sha256: 8442607caec78f127bf716977bad49f8deb2b79fc1c6732ae3d23afbfac9e2c5
 
 requirements:
   build:
