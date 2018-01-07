@@ -1,0 +1,13 @@
+diff --git a/sources/PB.cpp b/sources/PB.cpp
+index 480d994..3047f33 100644
+--- a/sources/PB.cpp
++++ b/sources/PB.cpp
+@@ -101,7 +101,7 @@ int main(int argc, char* argv[])	{
+ 					cerr << "\n";
+ 				}
+ 				MPI_Finalize();
+-				exit(1);
++				exit(0);
+ 			}
+ 			else if ((s == "-h") || (s == "--help"))	{
+ 				throw(0);

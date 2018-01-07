@@ -1,0 +1,30 @@
+package:
+  name: phylobayes
+  version: "4.1c"
+
+build:
+  number: 0
+
+source:
+  fn: phylobayes4.1c.tar.gz
+  url: http://megasun.bch.umontreal.ca/People/lartillot/www/phylobayes4.1c.tar.gz
+  md5: d0bb2c0b61d6a94ed0b308bc3fafca29
+
+  patches:
+    - PB.cpp.patch    # Change exit status of pb -v to 0 to make a valid test
+
+requirements:
+  build:
+    - gcc   # [not osx]
+    - llvm  # [osx]
+
+  run:
+    - libgcc    # [not osx]
+
+test:
+  commands:
+    - pb -v > /dev/null
+
+about:
+  home: http://megasun.bch.umontreal.ca/People/lartillot/www/download.html
+  summary: Phylogenetics - Bayesian Analysis.

@@ -1,0 +1,30 @@
+package:
+  name: pbmpi
+  version: 1.7
+
+source:
+  fn: 01cbc7d9d9f192eb7be0e1dc7614169d444faa3d.tar.gz
+  url: https://github.com/bayesiancook/pbmpi/archive/01cbc7d9d9f192eb7be0e1dc7614169d444faa3d.tar.gz
+  md5: c5b1ddb0779deffcd1a009304d26b873
+
+  patches:
+    - PB.cpp.patch    # Change exit status of pb -v to 0 to make a valid test
+
+requirements:
+  build:
+    - gcc   # [not osx]
+    - llvm  # [osx]
+    - mpich
+  run:
+    - libgcc    # [not osx]
+    - mpich
+
+test:
+  commands:
+    - pb_mpi -v > /dev/null
+
+
+about:
+  home: http://sco.h-its.org/exelixis/web/software/raxml/index.html
+  license: GPLv3
+  summary: Phylogenetics - Randomized Axelerated Maximum Likelihood

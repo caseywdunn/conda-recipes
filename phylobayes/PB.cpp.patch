@@ -1,0 +1,292 @@
+diff --git a/sources/PB.cpp b/sources/PB.cpp
+index d431f5f..6e19987 100644
+--- a/sources/PB.cpp
++++ b/sources/PB.cpp
+@@ -3,10 +3,10 @@
+ 
+ int main(int argc, char* argv[])	{
+ 
+-	// initialise random 
++	// initialise random
+ 
+ 	GeneticCodeType gencode = Universal;
+-	
++
+ 	double fixratealpha = 0;
+ 
+ 	int catalpha = 0;
+@@ -41,7 +41,7 @@ int main(int argc, char* argv[])	{
+ 
+ 	int clock = 0;
+ 	int normalapprox = 0;
+-	int separate = 0; // 0 : concat 1 : separate 2 : separate with multipliers		
++	int separate = 0; // 0 : concat 1 : separate 2 : separate with multipliers
+ 	int autorestart = 0;
+ 
+ 	int covarion = 0;
+@@ -100,7 +100,7 @@ int main(int argc, char* argv[])	{
+ 	string outgroup = "";
+ 	string calibration = "";
+ 	string statfix = "";
+-	
++
+ 	int timeprior = 0; // 0: uniform, 1:birth death, 2:dirichlet
+ 	double chi = -1;
+ 	double chi2 = -1;
+@@ -131,7 +131,7 @@ int main(int argc, char* argv[])	{
+ 
+ 	int qmod = 0;
+ 	int lengthprior = 1; // gamma
+-	// 0: exponential	
++	// 0: exponential
+ 
+ 	int fixroot = 0;
+ 
+@@ -152,8 +152,8 @@ int main(int argc, char* argv[])	{
+ 	fos.close();
+ 	exit(1);
+ 	*/
+-		
+-	
++
++
+ 	// read arguments
+ 	try	{
+ 		if (argc == 1)	{
+@@ -171,7 +171,7 @@ int main(int argc, char* argv[])	{
+ 			}
+ 			else if ((s == "-v") || (s == "--version"))	{
+ 				cerr << "phylobayes version 4.1b\n";
+-				exit(1);
++				exit(0);
+ 			}
+ 			else if (s == "-d")	{
+ 				i++;
+@@ -530,11 +530,11 @@ int main(int argc, char* argv[])	{
+ 			}
+ 			else if (s == "-covarion")	{
+ 				covarion = 1;
+-				external = 0;	
++				external = 0;
+ 			}
+ 			else if (s == "-covext")	{
+ 				covarion = 1;
+-				external = 1;	
++				external = 1;
+ 			}
+ 			else if (s == "-fast")	{
+ 				zipgtr = 4;
+@@ -636,7 +636,7 @@ int main(int argc, char* argv[])	{
+ 				movefreq = 1;
+ 				nh = 5;
+ 			}
+-			
++
+ 			else if (s == "-dnh")	{
+ 				movefreq = 1;
+ 				nh = 6;
+@@ -703,7 +703,7 @@ int main(int argc, char* argv[])	{
+ 				if (!clock)	{
+ 					clock = 2;
+ 				}
+-			}	
++			}
+ 			else if (s == "-dc")	{
+ 				deleteconstant = 1;
+ 			}
+@@ -731,7 +731,7 @@ int main(int argc, char* argv[])	{
+ 				else {
+ 					rec = Custom;
+ 					recfile = argv[i];
+-					cerr << "loading recoding table from " << recfile << '\n';	
++					cerr << "loading recoding table from " << recfile << '\n';
+ 				}
+ 			}
+ 			else if (s == "-t")	{
+@@ -940,7 +940,7 @@ int main(int argc, char* argv[])	{
+ 			}
+ 			else if ((s == "-qsub") || (s == "-qprep"))	{
+ 				qmode = 2;
+-			} 
++			}
+ 			else if (s == "-bg")	{
+ 				qmode = 1;
+ 			}
+@@ -1002,8 +1002,8 @@ int main(int argc, char* argv[])	{
+ 		cerr << '\n';
+ 
+ 		cerr << "tree:\n";
+-		cerr << "\t-t <treefile>       : starts from specified tree\n"; 
+-		cerr << "\t-T <treefile>       : chain run under fixed, specified tree\n"; 
++		cerr << "\t-t <treefile>       : starts from specified tree\n";
++		cerr << "\t-T <treefile>       : chain run under fixed, specified tree\n";
+ 		cerr << "\t-r <outgroup>       : re-root the tree (useful under clock models)\n";
+ 		cerr << '\n';
+ 
+@@ -1016,8 +1016,8 @@ int main(int argc, char* argv[])	{
+ 
+ 		cerr << "\tchoice of relative rates of substitution\n";
+ 		cerr << "\t\t-lg          : Le and Gascuel 2008\n";
+-		cerr << "\t\t-wag         : Whelan and Goldman 2001\n";	
+-		cerr << "\t\t-jtt         : Jones, Taylor, Thornton 1992\n";	
++		cerr << "\t\t-wag         : Whelan and Goldman 2001\n";
++		cerr << "\t\t-jtt         : Jones, Taylor, Thornton 1992\n";
+ 		cerr << "\t\t-mtrev       : Hadachi and Hasegawa 1996\n";
+ 		cerr << "\t\t-mtzoa       : Rota Stabelli et al 2009\n";
+ 		cerr << "\t\t-mtart       : Rota Stabelli et al 2009\n";
+@@ -1055,7 +1055,7 @@ int main(int argc, char* argv[])	{
+ 		cerr << '\n';
+ 		cerr << "pb <name>\n";
+ 		cerr << "\tstarts an already existing chain\n";
+-		
++
+ 		cerr << '\n';
+ 		cerr << "see manual for details\n";
+ 		cerr << '\n';
+@@ -1078,7 +1078,7 @@ int main(int argc, char* argv[])	{
+ 			else if (tmp == "-path")	{
+ 				i++;
+ 			}
+-			else	{ 
++			else	{
+ 				os << argv[i] << ' ';
+ 			}
+ 			i++;
+@@ -1163,7 +1163,7 @@ int main(int argc, char* argv[])	{
+ 		cerr << "use \"-f\" option to override\n";
+ 		exit(1);
+ 	}
+-	
++
+ 	// open the log file: will contain all the details about model specification
+ 	// doublestream os((name + ".log").c_str());
+ 	ofstream os((name + ".log").c_str());
+@@ -1212,7 +1212,7 @@ int main(int argc, char* argv[])	{
+ 	else if (gammaprior == 2)	{
+ 		mParam->GammaPrior = PowerLaw;
+ 	}
+-	
++
+ 
+ 	if (!mParam->SaveAll)	{
+ 		os << "Warning: only the topologies (.treelist) and the summary statistics (.trace) are saved\n";
+@@ -1239,12 +1239,12 @@ int main(int argc, char* argv[])	{
+ 	else	{
+ 		mParam->RRPrior = Exponential;
+ 	}
+- 
++
+ 
+ 	if (tempering)	{
+ 		os << "simulated tempering\n";
+ 		os << "from " << initbeta << " every " << betastep << "\n";
+-		os << "burnin : " << burnin << '\n';	
++		os << "burnin : " << burnin << '\n';
+ 		mParam->Tempering = 1;
+ 		mParam->MSMode = Thermo;
+ 		mParam->BurnIn = burnin;
+@@ -1254,7 +1254,7 @@ int main(int argc, char* argv[])	{
+ 	if (catalpha)	{
+ 		os << "cat alpha thermo integration\n";
+ 		os << "from " << initbeta << " to " << finalbeta << " every " << betastep << "\n";
+-		os << "burnin : " << burnin << '\n';	
++		os << "burnin : " << burnin << '\n';
+ 		mParam->MSMode = CATAlpha;
+ 		mParam->BurnIn = burnin;
+ 		mParam->InitBeta = initbeta;
+@@ -1264,7 +1264,7 @@ int main(int argc, char* argv[])	{
+ 	if (lengthgamma)	{
+ 		os << "length gamma thermo integration\n";
+ 		os << "from " << initbeta << " to " << finalbeta << " every " << betastep << "\n";
+-		os << "burnin : " << burnin << '\n';	
++		os << "burnin : " << burnin << '\n';
+ 		mParam->MSMode = LengthMixGamma;
+ 		mParam->BurnIn = burnin;
+ 		mParam->InitBeta = initbeta;
+@@ -1274,7 +1274,7 @@ int main(int argc, char* argv[])	{
+ 	if (rategamma)	{
+ 		os << "rate gamma thermo integration\n";
+ 		os << "from " << initbeta << " to " << finalbeta << " every " << betastep << "\n";
+-		os << "burnin : " << burnin << '\n';	
++		os << "burnin : " << burnin << '\n';
+ 		mParam->MSMode = RateGamma;
+ 		mParam->BurnIn = burnin;
+ 		mParam->InitBeta = initbeta;
+@@ -1284,7 +1284,7 @@ int main(int argc, char* argv[])	{
+ 	if (covinvprob)	{
+ 		os << "covarion invprob thermo integration\n";
+ 		os << "from " << initbeta << " to " << finalbeta << " every " << betastep << "\n";
+-		os << "burnin : " << burnin << '\n';	
++		os << "burnin : " << burnin << '\n';
+ 		// mParam->MSMode = CovInvProb;
+ 		mParam->BurnIn = burnin;
+ 		mParam->InitBeta = initbeta;
+@@ -1331,7 +1331,7 @@ int main(int argc, char* argv[])	{
+ 			}
+ 			if (datafile != "")	{
+ 				mParam->ReadCov(datafile);
+-				os << "variance covariance matrix: " << datafile << '\n'; 
++				os << "variance covariance matrix: " << datafile << '\n';
+ 			}
+ 		}
+ 	}
+@@ -1378,7 +1378,7 @@ int main(int argc, char* argv[])	{
+ 		os << '\n';
+ 		mParam->Beta0 = 0;
+ 	}
+-		
++
+ 	if (withpartial)	{
+ 		mParam->WithPartial = 1;
+ 		os << "fast computation / high memory use \n";
+@@ -1401,7 +1401,7 @@ int main(int argc, char* argv[])	{
+ 		os << "outgroup : " << outgroup << '\n';
+ 	}
+ 	os << '\n';
+-	
++
+ 	// branch lengths
+ 	//
+ 	if (lengthprior == 0)	{
+@@ -1469,7 +1469,7 @@ int main(int argc, char* argv[])	{
+ 	mParam->NHPop = nhpop;
+ 
+ 	if (nh)	{
+-		
++
+ 		if (rr != poisson)	{
+ 			cerr << "error : non homogeneous model works only with F81 models, and not with general time reversible settings\n";
+ 			exit(1);
+@@ -1493,7 +1493,7 @@ int main(int argc, char* argv[])	{
+ 			os << "beta parameter is non-homogeneous\n";
+ 		}
+ 	}
+-		
++
+ 	if ((rr != poisson) && (! forcecat))	{
+ 		ncat = 1;
+ 	}
+@@ -1665,7 +1665,7 @@ int main(int argc, char* argv[])	{
+ 		}
+ 		os << '\n';
+ 	}
+-			
++
+ 	if (nh)	{
+ 		mParam->NH = nh;
+ 		mParam->NHNcatMax = nnh;
+@@ -1920,7 +1920,7 @@ int main(int argc, char* argv[])	{
+ 		mParam->ReadCustomRR(rrfile);
+ 	}
+ 
+-	
++
+ 	// everything is all set. Now call the Init() function
+ 	// to finish the initialisation
+ 
+@@ -2012,5 +2012,3 @@ int main(int argc, char* argv[])	{
+ 	chain.Start();
+ 
+ }
+-
+-
