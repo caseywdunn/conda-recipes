@@ -19,5 +19,5 @@ Local use example:
 
 Local example:
 
-    conda build --channel conda-forge -n pbmpi .
+    conda build --channel conda-forge -n phylobayes_mpi .
     conda install -c conda-forge --use-local phylobayes_mpi
