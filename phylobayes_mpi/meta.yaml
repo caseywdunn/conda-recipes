@@ -1,14 +1,12 @@
 package:
   name: phylobayes_mpi
-  version: 1.7
+  version: 1.8
 
 source:
-  fn: 01cbc7d9d9f192eb7be0e1dc7614169d444faa3d.tar.gz
-  url: https://github.com/bayesiancook/pbmpi/archive/01cbc7d9d9f192eb7be0e1dc7614169d444faa3d.tar.gz
-  md5: c5b1ddb0779deffcd1a009304d26b873
+  fn: 2f5deee75687a51225a0bd4705c93f3292f85cdb.tar.gz
+  url: https://github.com/bayesiancook/pbmpi/archive/2f5deee75687a51225a0bd4705c93f3292f85cdb.tar.gz
+  sha256: dfd7276593e41c55faf57a7c4dc8e1fa86a919891001324df2350f394dc18fdf
 
-  patches:
-    - PB.cpp.patch    # Change exit status of pb -v to 0 to make a valid test
 
 requirements:
   build:
@@ -16,15 +14,13 @@ requirements:
     - llvm  # [osx]
     - mpich
   run:
-    - libgcc    # [not osx]
     - mpich
 
 test:
   commands:
     - pb_mpi -v > /dev/null
 
-
 about:
-  home: http://sco.h-its.org/exelixis/web/software/raxml/index.html
-  license: GPLv3
-  summary: Phylogenetics - Randomized Axelerated Maximum Likelihood
+  home: https://github.com/bayesiancook/pbmpi
+  license: GPLv2
+  summary: Phylogenetics - Bayesian phylogenetic reconstruction using mixture models
