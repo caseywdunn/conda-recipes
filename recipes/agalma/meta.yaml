@@ -1,11 +1,11 @@
 package:
   name: agalma
-  version: 1.0.1
+  version: 1.1.0
 
 source:
-  fn: agalma-1.0.1.zip
-  url: https://bitbucket.org/caseywdunn/agalma/get/release-1.0.1.zip
-  sha256: 8442607caec78f127bf716977bad49f8deb2b79fc1c6732ae3d23afbfac9e2c5
+  fn: agalma-1.1.0.zip
+  url: https://bitbucket.org/caseywdunn/agalma/get/release-1.1.0.zip
+  sha256: ab6d3bb39ba3a58eee079864c7578a56989f7341d13d7746837b6e5a741b18a1
 
 requirements:
   build:
@@ -28,7 +28,7 @@ requirements:
     - rsem-eval ==1.9
     - samtools ==1.2
     - transdecoder ==2.1.0
-    - trinity ==2.3.2
+    - trinity ==2.5.1
 
 test:
   imports:
