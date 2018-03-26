@@ -1,14 +1,27 @@
 # Conda recipes
 
-A variety of [conda recipes](https://conda.io/docs/user-guide/tasks/build-packages/recipe.html) used in the [Dunn Lab](http://dunnlab.org).
+*This is a work in progress. Documentation does not reflect what exists yet.
+Some recipes may work, some may not. These are provided with no warranty.*
 
-*This is a work in progress. Documentation does not reflect what exists yet. Some recipes may work, some may not. These are provided with no warranty.*
 
-Many of the recipes are are for dependencies of our tool
-[agalma](https://bitbucket.org/caseywdunn/agalma). Others are things that we
-frequently use for work in the lab.
+A variety of
+[conda recipes](https://conda.io/docs/user-guide/tasks/build-packages/recipe.html)
+used in the [Dunn Lab](http://dunnlab.org). These recipes define conda packages
+that are available in our [dunnlab channel](https://anaconda.org/dunnlab/) on
+Anaconda Cloud.
 
-We love [bioconda](http://bioconda.github.io) and are frequent users and
+These packages serve a few purposes:
+
+- Many are dependencies of our tool
+[agalma](https://bitbucket.org/caseywdunn/agalma). Distributing these
+dependencies here facilitates installation of that tool.
+
+- We work across a variety of clusters, cloud computing services, and other
+  computers. Putting our commonly used tools here makes it easy to get our
+  analyses up and runnign wherever we are working.
+
+We love [bioconda](http://bioconda.github.io), an excellent and much more
+extensive channel for bioinformatics software. We are frequent bioconda users and
 sometimes contributors. So why do we also maintain a separate set of conda
 recipes that aren't part of bioconda? Sometimes our needs diverge a bit from
 the design decisions that have been made for the bioconda project. These are
