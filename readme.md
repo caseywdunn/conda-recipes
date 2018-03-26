@@ -67,13 +67,36 @@ For more on conda, see my [cheet sheat](https://gist.github.com/caseywdunn/59c94
 
 ## Development
 
+### Git model
+
+To add or modify a recipe:
+
+1. File an issue in the issue tracker describing what is to be done
+2. Create a new branch from `master` named after the issue, eg `issue-5`.
+3. Make all the changes in this branch.
+4. Confirm that you can locally build, install, and execute the package.
+5. Once it passes the above tests, merge the issue branch back into the
+   `master` branch.
+6. Build and upload the package to Anaconda Cloud as described below.
+
+### Guidelines
+
 Recipes should conform to [bioconda guidelines](http://bioconda.github.io/guidelines.html)
 where possible.
+
+All packages should work on linux. Some may also work on macOS.
+
+All dependencies should be in dunnlab, ie now other channels should need to be
+loaded to install a package from this channel. (We may revisit this decision at
+a later date.)
+
+At present we do not have a formal testing procedure. At a minimum,
 
 ### Local execution
 
 During development you should do local building, installation, and testing.
-Here are some examples of how to do this.
+Here are some examples of how to do this. This testing is best done in a
+docker container.
 
 Paths below are relative to the root of this repository.
 
@@ -86,3 +109,19 @@ Local use phylobayes_mpi example:
 
     conda build --channel conda-forge -n phylobayes_mpi .
     conda install -c conda-forge --use-local phylobayes_mpi
+
+### Uploading packages to Anaconda Cloud
+
+More on Anaconda Cloud can be found [here](https://docs.anaconda.com/anaconda-cloud/user-guide/tasks/work-with-packages).
+
+Here is the procedure for uploading a specific package to Anaconda Cloud:
+
+    docker run -it -v /path/to/conda-recipes/recipes:/recipes mhowison/conda-build bash # change path /path/to/conda-recipes/recipes to the recipes folder of this repository
+    conda update -n root conda-build # make sure you have the latest conda and conda build
+    cd /recipes/<package-name>
+    conda build -c dunnlab .
+
+If the test passes and the recipe builds successfully, upload/release the package on anaconda.org from within the Docker container with:
+
+    anaconda login
+    anaconda upload <path to built .tar.bz2>
