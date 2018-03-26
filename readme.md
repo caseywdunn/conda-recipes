@@ -103,7 +103,12 @@ All dependencies should be in dunnlab, ie now other channels should need to be
 loaded to install a package from this channel. (We may revisit this decision at
 a later date.)
 
-At present we do not have a formal testing procedure. At a minimum,
+Do not delete old versions of packages. Instead, move the contents of the
+recipe directory into a subdirectory. See for example https://github.com/bioconda/bioconda-recipes/tree/master/recipes/samtools .
+
+If I recipe for a given version of a given tool is changed in any way after
+pushing to Anaconda Cloud, bump the build number.
+
 
 ### Local execution
 
