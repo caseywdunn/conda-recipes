@@ -1,0 +1,40 @@
+{% set name = "trinity" %}
+{% set version = "2.6.5" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name|lower }}_{{ version }}.tar.gz
+  url: https://github.com/trinityrnaseq/trinityrnaseq/archive/Trinity-v{{ version }}.tar.gz
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - libgcc-ng
+  host:
+    - perl ==5.22.2.1
+    - zlib ==1.2.8
+  run:
+    - openjdk ==1.8.0.102
+    - perl ==5.22.2.1
+    - zlib ==1.2.8
+
+test:
+  commands:
+    - "Trinity --cite"
+    - "align_and_estimate_abundance.pl --help &> /dev/null || [[ \"$?\" == 255 ]]"
+    - "abundance_estimates_to_matrix.pl --help &> /dev/null || [[ \"$?\" == 255 ]]"
+    - "run_DE_analysis.pl -h &> /dev/null || [[ \"$?\" == 255 ]]"
+    - "analyze_diff_expr.pl -h &> /dev/null || [[ \"$?\" == 255 ]]"
+    - "PtR --help &> /dev/null || [[ \"$?\" == 255 ]]"
+    - "TrinityStats.pl 2>&1 | grep \"usage:\" "
+    - "define_clusters_by_cutting_tree.pl 2>&1 | grep \"define K clusters via k-means algorithm\" "
+
+about:
+  home: https://github.com/trinityrnaseq/trinityrnaseq
+  summary: Trinity RNA-Seq de novo transcriptome assembly
+  license: BSD
+  license_file: LICENSE
